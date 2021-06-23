@@ -1,0 +1,119 @@
+:root {
+    --main-feel-color: #CD5334;
+    --darker-offset-color: #546F91;
+    --dark-color: #2E282A;
+    --box-shadow-color: rgba(0, 0, 0, 0.56);
+}
+
+
+/* Global */
+
+* {
+    font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    color: white;
+    text-align: center;
+}
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    position: relative;
+}
+
+h1 {
+    font-size: 3em;
+    margin: 10px 0 0 0;
+}
+
+header {
+    padding: 20px;
+    background: var(--main-feel-color);
+    padding-bottom: 1em;
+}
+
+ol,
+li {
+    padding: 0 0 5px 0.75em;
+    margin-left: 1em;
+    text-align: left;
+    font-size: 1.11em;
+}
+
+h2 {
+    text-align: left;
+}
+
+main {
+    padding: 20px;
+    background: var(--darker-offset-color);
+}
+
+footer {
+    padding: 20px;
+    background: var(--dark-color);
+}
+
+img {
+    width: 25%;
+    height: auto;
+}
+
+.button {
+    margin-top: 0.85em;
+    height: 3em;
+    width: 7em;
+    background-color: var(--dark-color);
+    font-size: 2em;
+    border: 0;
+    outline: solid 0px var(--main-feel-color);
+    transition: outline 0.3s linear, background-color 1.6s linear;
+}
+
+.button:hover {
+    outline-width: 10px;
+    background-color: #181516;
+}
+
+.question-container {
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.user-choice {
+    padding: 5px 10px 5px 10px;
+    transition: transform .2s;
+}
+
+.user-choice:hover {
+    background-color: #181516;
+    border-radius: 5px;
+    border: 2px solid var(--main-feel-color);
+    font-size: 24px;
+}
+
+@media screen and (max-width: 768px) {
+    img {
+        width: 65%;
+        height: auto;
+    }
+    h1 {
+        font-size: 40px;
+    }
+    h2 {
+        font-size: 15px;
+    }
+    ol,
+    li {
+        font-size: 0.9em;
+        margin-left: 0.5em;
+    }
+    .question-container {
+        width: 95%;
+    }
+}
