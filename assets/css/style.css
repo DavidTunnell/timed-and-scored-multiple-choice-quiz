@@ -65,6 +65,7 @@ img {
 
 .button {
     margin-top: 0.85em;
+    margin-bottom: 0.90em;
     height: 3em;
     width: 7em;
     background-color: var(--dark-color);
@@ -95,6 +96,10 @@ img {
     border-radius: 5px;
     border: 2px solid var(--main-feel-color);
     font-size: 24px;
+}
+
+.hide-element {
+    display: none;
 }
 
 @media screen and (max-width: 768px) {

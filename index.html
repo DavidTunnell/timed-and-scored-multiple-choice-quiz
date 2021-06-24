@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <!-- Font Awesome Free -->
     <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
     <title>Coding Quiz JavaScript Demo</title>
 </head>
@@ -18,18 +17,32 @@
     </header>
 
     <main>
+        <div class="score-container">
+            <h2>Score / Timer: <span class="time-score">0</span></h2>
+        </div>
         <section>
             <button class="button" type="button">Start Quiz</button>
         </section>
-        <section class="question-container">
-            <h2>This is an example of a question with more text. _____ example is _____. Here is even more text.</h2>
+        <section class="question-container hide-element">
+            <h2 class="question"></h2>
             <ol>
-                <li><span class="user-choice">Answer #1</span></li>
-                <li><span class="user-choice">Answer #2 adasdas</span></li>
-                <li><span class="user-choice">Answer #3</span></li>
-                <li><span class="user-choice">Answer #4</span></li>
-                <li><span class="user-choice">Answer #5</span></li>
-                <ol>
+                <li><span class="user-choice"></span></li>
+                <li><span class="user-choice"></span></li>
+                <li><span class="user-choice"></span></li>
+                <li><span class="user-choice"></span></li>
+                <li><span class="user-choice"></span></li>
+            </ol>
+            <div>
+                <h2 class="user-feedback"></h2>
+            </div>
+        </section>
+        <section class="game-over-container hide-element">
+            <h2>Game Over!</h2>
+            <p>Final Score: <span class="final-score"></span></p>
+            <form>
+                <input type="textbox" value="Click me">
+                <input class="button" type="button" value="Click me">
+            </form>
         </section>
     </main>
 
