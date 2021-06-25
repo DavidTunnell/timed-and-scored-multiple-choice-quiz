@@ -186,6 +186,7 @@ clearScoreButton.addEventListener("click", function(event) {
 
 //generate populated table
 function generateTable() {
+    //clear current render
     highScoreBoard.innerHTML = "<tr><th>Initials</th><th>Score</th></tr>";
     //get parsed array of score objects
     var allSavedScores = JSON.parse(localStorage.getItem("allScoreEntries"));
