@@ -21,6 +21,7 @@ body,
 html {
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
 }
 
 a {
@@ -59,6 +60,7 @@ main {
 footer {
     padding: 20px;
     background: var(--dark-color);
+    height: 100%;
 }
 
 img {
@@ -71,7 +73,7 @@ img {
 
 .button {
     margin-top: 0.85em;
-    margin-bottom: 0.90em;
+    margin-bottom: 1.30em;
     height: 3em;
     width: 7em;
     background-color: var(--dark-color);
@@ -87,6 +89,18 @@ img {
     height: 2em;
     width: 5em;
     font-size: 1em;
+    margin-bottom: 0;
+}
+
+.restart-quiz,
+.clear-scores {
+    height: 2em;
+    font-size: 1em;
+    margin: 1.25em 10px 0 10px;
+}
+
+.user-buttons {
+    display: inline-block;
 }
 
 .button:hover {
@@ -98,16 +112,15 @@ img {
 .score-container,
 .game-over-container,
 .high-scores,
+.user-buttons,
 .user-feedback {
     width: 60%;
     margin-left: auto;
     margin-right: auto;
 }
 
-.game-over-content,
-.final-score-board,
+.game-over-content h2,
 .user-feedback {
-    display: block;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
@@ -118,6 +131,10 @@ img {
 .user-feedback {
     font-size: 30px;
     color: yellow;
+}
+
+.user-entry {
+    margin-top: 1.5em;
 }
 
 .user-choice {
@@ -136,6 +153,7 @@ img {
     width: 70px;
     color: black;
     font-size: 14px;
+    margin-top: 1.25em;
 }
 
 .hide-element {
@@ -149,6 +167,7 @@ img {
     border-collapse: collapse;
     width: 30%;
     background-color: var(--dark-color);
+    margin-top: 1.5em;
 }
 
 .high-scores td,
@@ -193,6 +212,12 @@ img {
     }
     .user-choice:hover {
         font-size: 13px;
+    }
+    .high-scores {
+        width: 100%;
+    }
+    .game-over-content h1 {
+        font-size: 2em;
     }
 }
 

@@ -39,26 +39,24 @@
         <section class="game-over-container hide-element">
             <div class="game-over-content">
                 <h1>Game Over!</h1>
-                <h2 class="final-score-board">Final Score: <span class="final-score"></span></h2>
-                <p>Enter your initials to save your score (in local storage).</p>
-                <form>
-                    <input class="initial-entry" type="textbox">
+                <h2>Final Score: <span class="final-score"></span></h2>
+
+                <form class="user-entry">
+                    <p>Enter your initials to save your score (in local storage).</p>
+                    <input class="initial-entry" type="textbox" maxlength="10">
                     <input class="button button-submit" type="button" value="Submit">
                 </form>
+                <h1>High Scores</h1>
                 <table class="high-scores">
                     <tr>
                         <th>Initials</th>
                         <th>Score</th>
                     </tr>
-                    <tr>
-                        <td>SDK</td>
-                        <td>78</td>
-                    </tr>
-                    <tr>
-                        <td>QQ</td>
-                        <td>77</td>
-                    </tr>
                 </table>
+                <div class="user-buttons">
+                    <input class="button clear-scores" type="button" value="Clear">
+                    <a href="/"><input class="button restart-quiz" type="button" value="Restart"></a>
+                </div>
             </div>
         </section>
     </main>

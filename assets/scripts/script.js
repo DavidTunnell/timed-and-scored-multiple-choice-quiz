@@ -108,11 +108,20 @@ var gameOverContainer = document.querySelector(".game-over-container");
 var scoreContainer = document.querySelector(".score-container");
 var userFeedback = document.querySelector(".user-feedback");
 var givenAnswers = document.querySelector(".given-answers");
+var initialEntry = document.querySelector(".initial-entry");
+var submitButton = document.querySelector(".button-submit");
+var userEntry = document.querySelector(".user-entry");
+var highScoreBoard = document.querySelector(".high-scores");
+var clearScoreButton = document.querySelector(".clear-scores");
 
-// Scorecard / Countdown
-var timeScore = 30;
-var playerInitials = "";
+
+// Game Variables
+var timeScore = 90;
 var answerWaitTime = 1000;
+var scoreBoardSave = {
+    score: "",
+    initials: ""
+};
 
 //get random array for question display
 var randomOrder = getRandomIntArray(0, questions.length);
@@ -151,9 +160,60 @@ startButton.addEventListener("click", function(event) {
     scoreTimerCountdown();
     //execute the quiz in random order
     getNextQuestionOrEnd();
-    //it might break here because of the error, might need to fix before continuing
-
 });
+
+//submit initials/score button
+submitButton.addEventListener("click", function(event) {
+    //save final score to game (if not grab final-score timer value)
+    scoreBoardSave.score = finalScore.innerHTML;
+    //save initials
+    scoreBoardSave.initials = initialEntry.value;
+    //save to local storage
+    addLocalStorageEntry(scoreBoardSave);
+    //render on score card
+    generateTable();
+    //hide input fields
+    userEntry.classList.add('hide-element');
+    finalScore.parentElement.classList.add('hide-element');
+});
+
+//clear local storage entry
+clearScoreButton.addEventListener("click", function(event) {
+    existingEntries = [];
+    localStorage.setItem("allScoreEntries", JSON.stringify(existingEntries));
+    generateTable();
+});
+
+//generate populated table
+function generateTable() {
+    highScoreBoard.innerHTML = "<tr><th>Initials</th><th>Score</th></tr>";
+    //get parsed array of score objects
+    var allSavedScores = JSON.parse(localStorage.getItem("allScoreEntries"));
+    //generate each score
+    for (let i = 0; i < allSavedScores.length; i++) {
+        const element = allSavedScores[i];
+        highScoreBoard.innerHTML += "<tr><td>" + element.initials + "</td><td>" + element.score + "</td></tr>";
+    }
+}
+
+//pull array from local storage and add object entries to it
+//https://stackoverflow.com/questions/19635077/adding-objects-to-array-in-localstorage
+function addLocalStorageEntry(scoreBoardObject) {
+    // Parse any JSON previously stored in allEntries
+    var existingEntries = JSON.parse(localStorage.getItem("allScoreEntries"));
+    if (existingEntries == null) {
+        existingEntries = [];
+    }
+    localStorage.setItem("userEntry", JSON.stringify(scoreBoardObject));
+    //add object to array
+    existingEntries.push(scoreBoardObject);
+    //sort array before adding to local storage - https://stackoverflow.com/questions/979256/sorting-an-array-of-objects-by-property-values
+    existingEntries.sort(function(b, a) {
+        return parseFloat(a.score) - parseFloat(b.score);
+    });
+    // Save allEntries back to local storage
+    localStorage.setItem("allScoreEntries", JSON.stringify(existingEntries));
+};
 
 //Get an array of random unique integers between min and max
 function getRandomIntArray(min, max) {
@@ -178,12 +238,10 @@ function scoreTimerCountdown() {
             clearInterval(countDown);
             getNextQuestionOrEnd();
         }
-
     }, 1000);
 }
 
 function getNextQuestionOrEnd() {
-
     //check if there are remaining random array values
     if (randomOrder.length !== 0 && timeScore > 0) {
         //get last item and remove it from array
@@ -210,11 +268,6 @@ function getNextQuestionOrEnd() {
         questionContainer.classList.add('hide-element');
         scoreContainer.classList.add('hide-element');
         gameOverContainer.classList.remove('hide-element');
-
+        generateTable();
     }
 }
-
-
-//use local storage to keep score, etc. (get/set)
-// var count = localStorage.getItem("count");
-// localStorage.setItem("count", count);
