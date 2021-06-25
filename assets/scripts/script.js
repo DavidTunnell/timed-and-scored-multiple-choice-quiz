@@ -107,10 +107,12 @@ var finalScore = document.querySelector(".final-score");
 var gameOverContainer = document.querySelector(".game-over-container");
 var scoreContainer = document.querySelector(".score-container");
 var userFeedback = document.querySelector(".user-feedback");
+var givenAnswers = document.querySelector(".given-answers");
 
-// Scorecard 
+// Scorecard / Countdown
 var timeScore = 90;
 var playerInitials = "";
+var answerWaitTime = 1000;
 
 //get random array for question display
 var randomOrder = getRandomIntArray(0, questions.length);
@@ -118,17 +120,26 @@ var randomOrder = getRandomIntArray(0, questions.length);
 //add event listeners to each answer element
 for (let i = 0; i < answers.length; i++) {
     answers[i].addEventListener("click", function(event) {
+        //show feedback
+        userFeedback.classList.remove('hide-element');
         //get whether correct
         var isCorrect = answers[i].getAttribute("data-boolean");
         //convert string to boolean
         var isCorrectBool = (isCorrect.toLowerCase() === 'true')
-        if (!isCorrectBool) {
+        if (isCorrectBool) {
+            userFeedback.innerHTML = "Correct";
+        } else {
             timeScore = timeScore - 10;
             userFeedback.innerHTML = "Incorrect";
-        } else {
-            userFeedback.innerHTML = "Correct";
         }
-        getNextQuestionOrEnd();
+        givenAnswers.classList.add('hide-element');
+        //add timeout so user can see answer feedback
+        setTimeout(function() {
+            userFeedback.classList.add('hide-element');
+            givenAnswers.classList.remove('hide-element');
+            getNextQuestionOrEnd();
+        }, answerWaitTime);
+
     });
 }
 
@@ -179,8 +190,14 @@ function getNextQuestionOrEnd() {
         //add question to DOM
         question.innerHTML = questions[randomSelected].question;
         for (let i = 0; i < answers.length; i++) {
-            answers[i].innerHTML = questions[randomSelected].answers[i].textContent;
-            answers[i].setAttribute("data-boolean", questions[randomSelected].answers[i].isCorrect);
+            //if there are more answers than HTML elements to use them, hide the HTML element and don't populate anything
+            if (typeof questions[randomSelected].answers[i] === 'undefined') {
+                answers[i].parentElement.classList.add('hide-element');
+            } else {
+                answers[i].innerHTML = questions[randomSelected].answers[i].textContent;
+                answers[i].setAttribute("data-boolean", questions[randomSelected].answers[i].isCorrect);
+                answers[i].parentElement.classList.remove('hide-element');
+            }
         }
     } else { //else there are no more questions
         // show game over screen and set final score

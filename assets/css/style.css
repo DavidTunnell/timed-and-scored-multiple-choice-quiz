@@ -1,8 +1,11 @@
+/* Variables */
+
 :root {
     --main-feel-color: #CD5334;
     --darker-offset-color: #546F91;
     --dark-color: #2E282A;
     --box-shadow-color: rgba(0, 0, 0, 0.56);
+    --dark-hover: #181516;
 }
 
 
@@ -63,6 +66,9 @@ img {
     height: auto;
 }
 
+
+/* Classes */
+
 .button {
     margin-top: 0.85em;
     margin-bottom: 0.90em;
@@ -75,15 +81,51 @@ img {
     transition: outline 0.3s linear, background-color 1.6s linear;
 }
 
-.button:hover {
-    outline-width: 10px;
-    background-color: #181516;
+.button-submit {
+    margin-top: 0.1em;
+    margin-left: 1em;
+    height: 2em;
+    width: 5em;
+    font-size: 1em;
 }
 
-.question-container {
+.button:hover {
+    outline-width: 10px;
+    background-color: var(--dark-hover);
+}
+
+.question-container,
+.score-container,
+.game-over-container,
+.high-scores,
+.user-feedback {
     width: 60%;
     margin-left: auto;
     margin-right: auto;
+}
+
+.score-container,
+{
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 9em
+}
+
+.game-over-content,
+.final-score-board,
+.user-feedback {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.time-score,
+.final-score,
+.user-feedback {
+    font-size: 30px;
+    color: yellow;
 }
 
 .user-choice {
@@ -98,9 +140,45 @@ img {
     font-size: 24px;
 }
 
+.initial-entry {
+    width: 70px;
+    color: black;
+    font-size: 14px;
+}
+
 .hide-element {
     display: none;
 }
+
+
+/* Table https://www.w3schools.com/css/tryit.asp?filename=trycss_table_fancy */
+
+.high-scores {
+    border-collapse: collapse;
+    width: 30%;
+    background-color: var(--dark-color);
+}
+
+.high-scores td,
+.high-scores th {
+    border: 0;
+    padding: 8px;
+}
+
+.high-scores tr:hover {
+    background-color: var(--dark-hover);
+}
+
+.high-scores th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: var(--main-feel-color);
+    color: white;
+}
+
+
+/* Media Queries for Mobile Screens */
 
 @media screen and (max-width: 768px) {
     img {
@@ -120,5 +198,17 @@ img {
     }
     .question-container {
         width: 95%;
+    }
+    .user-choice:hover {
+        font-size: 13px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .user-choice:hover {
+        font-size: 13px;
+        border-radius: 0;
+        background-color: initial;
+        border: 0;
     }
 }
