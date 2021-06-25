@@ -110,7 +110,7 @@ var userFeedback = document.querySelector(".user-feedback");
 var givenAnswers = document.querySelector(".given-answers");
 
 // Scorecard / Countdown
-var timeScore = 90;
+var timeScore = 30;
 var playerInitials = "";
 var answerWaitTime = 1000;
 
@@ -139,7 +139,6 @@ for (let i = 0; i < answers.length; i++) {
             givenAnswers.classList.remove('hide-element');
             getNextQuestionOrEnd();
         }, answerWaitTime);
-
     });
 }
 
@@ -172,19 +171,21 @@ function scoreTimerCountdown() {
     //set score 1st for better responsiveness then initiate countdown
     score.innerHTML = timeScore;
     var countDown = setInterval(function() {
-        score.innerHTML = timeScore;
         timeScore--;
-        if (timeScore < 0) {
+        score.innerHTML = timeScore;
+        if (timeScore <= 0) {
             //setInterval() method returns an ID which can be used by the clearInterval() method to stop the interval.
             clearInterval(countDown);
+            getNextQuestionOrEnd();
         }
+
     }, 1000);
 }
 
 function getNextQuestionOrEnd() {
 
     //check if there are remaining random array values
-    if (randomOrder.length !== 0) {
+    if (randomOrder.length !== 0 && timeScore > 0) {
         //get last item and remove it from array
         var randomSelected = parseInt(randomOrder.pop());
         //add question to DOM
@@ -200,6 +201,10 @@ function getNextQuestionOrEnd() {
             }
         }
     } else { //else there are no more questions
+        //if the final score goes below zero set to zero
+        if (timeScore < 0) {
+            timeScore = 0;
+        }
         // show game over screen and set final score
         finalScore.innerHTML = timeScore;
         questionContainer.classList.add('hide-element');
