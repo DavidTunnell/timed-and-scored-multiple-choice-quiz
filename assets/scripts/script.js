@@ -113,6 +113,7 @@ var submitButton = document.querySelector(".button-submit");
 var userEntry = document.querySelector(".user-entry");
 var highScoreBoard = document.querySelector(".high-scores");
 var clearScoreButton = document.querySelector(".clear-scores");
+var restartQuizButton = document.querySelector(".restart-quiz");
 
 
 // Game Variables
@@ -128,7 +129,7 @@ var randomOrder = getRandomIntArray(0, questions.length);
 
 //add event listeners to each answer element
 for (let i = 0; i < answers.length; i++) {
-    answers[i].addEventListener("click", function(event) {
+    answers[i].addEventListener("click", function() {
         //show feedback
         userFeedback.classList.remove('hide-element');
         //get whether correct
@@ -152,7 +153,7 @@ for (let i = 0; i < answers.length; i++) {
 }
 
 //start quiz button event listener
-startButton.addEventListener("click", function(event) {
+startButton.addEventListener("click", function() {
     //hide quiz button, show quiz container HTML
     startButton.classList.add('hide-element');
     questionContainer.classList.remove('hide-element');
@@ -163,7 +164,7 @@ startButton.addEventListener("click", function(event) {
 });
 
 //submit initials/score button
-submitButton.addEventListener("click", function(event) {
+submitButton.addEventListener("click", function() {
     //save final score to game (if not grab final-score timer value)
     scoreBoardSave.score = finalScore.innerHTML;
     //save initials
@@ -178,10 +179,15 @@ submitButton.addEventListener("click", function(event) {
 });
 
 //clear local storage entry
-clearScoreButton.addEventListener("click", function(event) {
+clearScoreButton.addEventListener("click", function() {
     existingEntries = [];
     localStorage.setItem("allScoreEntries", JSON.stringify(existingEntries));
     generateTable();
+});
+
+//restart game
+restartQuizButton.addEventListener("click", function() {
+    window.open("./index.html");
 });
 
 //generate populated table

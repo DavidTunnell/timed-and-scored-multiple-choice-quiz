@@ -1,5 +1,5 @@
 # Timed and Scored Multiple Choice Quiz
-This is a JavaScript, HTML, CSS project from scratch for a gamified multiple choice quiz that is saveable to local storage. It includes the following pieces of functionality. 
+This is a JavaScript, HTML, CSS project for a gamified multiple choice quiz that is saveable to local storage. The timer starts at 90 seconds (by default). Each incorrect answer reduces the timer by 10 seconds (by default). When the array of questions is finished being iterated though there is a score given and the ability to save the score to a scoreboard. It includes the following pieces of functionality. 
 
 1. HTML/CSS Styling
 2. JavaScript Objects/Arrays/Data Structures 

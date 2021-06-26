@@ -12,16 +12,16 @@
 <body>
     <header>
         <h1>Multiple Choice</h1>
-        <img src="./assets/images/quiz.png">
+        <img src="./assets/images/quiz.png" alt="Quiz">
     </header>
 
     <main>
         <div class="score-container">
             <h3>Score / Timer: <span class="time-score">0</span></h3>
         </div>
-        <section>
+        <div>
             <button class="button" type="button">Start Quiz</button>
-        </section>
+        </div>
         <section class="question-container hide-element">
             <h2 class="question"></h2>
             <ol class="given-answers">
@@ -37,24 +37,28 @@
         </section>
         <section class="game-over-container hide-element">
             <div class="game-over-content">
-                <h1>Game Over!</h1>
-                <h2>Final Score: <span class="final-score"></span></h2>
+                <div>
+                    <h1>Game Over!</h1>
+                    <h2>Final Score: <span class="final-score"></span></h2>
 
-                <form class="user-entry">
-                    <p>Enter your initials to save your score (in local storage).</p>
-                    <input class="initial-entry" type="textbox" maxlength="10">
-                    <input class="button button-submit" type="button" value="Submit">
-                </form>
-                <h1>High Scores</h1>
-                <table class="high-scores">
-                    <tr>
-                        <th>Initials</th>
-                        <th>Score</th>
-                    </tr>
-                </table>
-                <div class="user-buttons">
-                    <input class="button clear-scores" type="button" value="Clear">
-                    <a href="./index.html"><input class="button restart-quiz" type="button" value="Restart"></a>
+                    <form class="user-entry">
+                        <p>Enter your initials to save your score (in local storage).</p>
+                        <input class="initial-entry" type="text" maxlength="10">
+                        <input class="button button-submit" type="button" value="Submit">
+                    </form>
+                </div>
+                <div>
+                    <h1>High Scores</h1>
+                    <table class="high-scores">
+                        <tr>
+                            <th>Initials</th>
+                            <th>Score</th>
+                        </tr>
+                    </table>
+                    <form class="user-buttons">
+                        <input class="button clear-scores" type="button" value="Clear">
+                        <input class="button restart-quiz" type="button" value="Restart">
+                    </form>
                 </div>
             </div>
         </section>
