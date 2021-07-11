@@ -162,6 +162,7 @@ startButton.addEventListener("click", function() {
     //execute the quiz in random order
     getNextQuestionOrEnd();
 });
+4
 
 //submit initials/score button
 submitButton.addEventListener("click", function() {
@@ -187,7 +188,7 @@ clearScoreButton.addEventListener("click", function() {
 
 //restart game
 restartQuizButton.addEventListener("click", function() {
-    window.open("./index.html");
+    window.location.href = "./index.html";
 });
 
 //generate populated table
@@ -249,7 +250,7 @@ function scoreTimerCountdown() {
 }
 
 function getNextQuestionOrEnd() {
-    //check if there are remaining random array values
+    //check if there are remaining random array values and that the score is above zero
     if (randomOrder.length !== 0 && timeScore > 0) {
         //get last item and remove it from array
         var randomSelected = parseInt(randomOrder.pop());
